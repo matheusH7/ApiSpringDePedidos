@@ -29,6 +29,11 @@ public class ClienteService {
 		return repositorio.insert(obj);
 	}
 	
+	public void delete(String id) {
+		findById(id);
+		repositorio.deleteById(id);
+	}
+	
 	public Cliente fromDTO(ClienteDTO objDTO) {
 		return new Cliente(objDTO.getId(), objDTO.getNome(), objDTO.getEmail(), objDTO.getTelefone(), objDTO.getDataDeNascimento());
 	}
