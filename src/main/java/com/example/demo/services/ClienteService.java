@@ -34,6 +34,20 @@ public class ClienteService {
 		repositorio.deleteById(id);
 	}
 	
+	public Cliente update(Cliente obj) {
+		Cliente newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repositorio.save(newObj);
+	}
+	
+	private void updateData(Cliente newObj, Cliente obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setDataDeNascimento(obj.getDataDeNascimento());
+		newObj.setEmail(obj.getEmail());
+		newObj.setTelefone(obj.getTelefone());
+		
+	}
+
 	public Cliente fromDTO(ClienteDTO objDTO) {
 		return new Cliente(objDTO.getId(), objDTO.getNome(), objDTO.getEmail(), objDTO.getTelefone(), objDTO.getDataDeNascimento());
 	}
