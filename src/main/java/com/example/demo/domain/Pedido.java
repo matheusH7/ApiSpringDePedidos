@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.demo.dto.ClientePedidoDTO;
+
 @Document
 public class Pedido implements Serializable{
 	
@@ -18,13 +20,13 @@ public class Pedido implements Serializable{
 	private String nome;
 	private double preco;
 	private String descricao;
-	private Cliente cliente;
+	private ClientePedidoDTO cliente;
 	
 	public Pedido() {
 		
 	}
 
-	public Pedido(String id, Date data, String nome, double preco, String descricao, Cliente cliente) {
+	public Pedido(String id, Date data, String nome, double preco, String descricao, ClientePedidoDTO cliente) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -74,11 +76,11 @@ public class Pedido implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public Cliente getCliente() {
+	public ClientePedidoDTO getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClientePedidoDTO cliente) {
 		this.cliente = cliente;
 	}
 
