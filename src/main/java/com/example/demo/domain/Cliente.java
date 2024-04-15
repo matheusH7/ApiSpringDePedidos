@@ -1,9 +1,12 @@
 package com.example.demo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "cliente")
@@ -19,6 +22,10 @@ public class Cliente implements Serializable{
 	private String telefone;
 	private String dataDeNascimento;
 	
+	@DBRef(lazy = true)
+	private List<Pedido> pedidos = new ArrayList<>();
+	
+
 	public Cliente() {
 		
 	}
@@ -29,6 +36,14 @@ public class Cliente implements Serializable{
 		this.email = email;
 		this.telefone = telefone;
 		this.dataDeNascimento = dataDeNascimento;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public String getId() {

@@ -42,6 +42,9 @@ public class IniciarBaseDeDados implements CommandLineRunner{
 		Pedido pedido2 = new Pedido(null, sdf.parse("10/04/24"), "A54", 1500.0, "128Gb de memoria e 6Gb de RAM", new ClientePedidoDTO(yuri));
 		
 		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
+		yuri.getPedidos().addAll(Arrays.asList(pedido2));
+		gabriel.getPedidos().addAll(Arrays.asList(pedido2));
+		clienteRepository.saveAll(Arrays.asList(yuri, gabriel));
 	}
 	
 }
